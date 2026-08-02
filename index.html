@@ -3,52 +3,360 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Birthday!</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Pacifico&display=swap" rel="stylesheet">
+<title>Happy Birthday Zainab ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Great+Vibes&display=swap" rel="stylesheet">
+
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:Poppins,sans-serif;overflow:hidden;background:linear-gradient(135deg,#0f172a,#1e1b4b,#312e81);height:100vh;display:flex;justify-content:center;align-items:center;color:#fff}
-canvas{position:fixed;top:0;left:0;z-index:0}
-.container{position:relative;z-index:2;text-align:center;padding:40px;max-width:800px}
-h1{font-family:Pacifico;font-size:65px;color:#ffd166;text-shadow:0 0 20px gold;animation:glow 2s infinite alternate}
-@keyframes glow{from{transform:scale(1)}to{transform:scale(1.05)}}
-.subtitle{font-size:22px;margin-top:15px;opacity:.9}
-.cake{font-size:120px;margin:20px 0;animation:bounce 2s infinite}
-@keyframes bounce{50%{transform:translateY(-18px)}}
-.message{margin-top:20px;font-size:20px;line-height:1.8;display:none;animation:fade 2s}
-@keyframes fade{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
-button{margin-top:30px;padding:15px 35px;font-size:20px;border:none;border-radius:40px;cursor:pointer;background:#ff4d6d;color:white;transition:.4s;box-shadow:0 0 20px #ff4d6d}
-button:hover{transform:scale(1.08);background:#ff758f}
-.balloon{position:absolute;bottom:-150px;font-size:45px;animation:float linear infinite}
-@keyframes float{0%{transform:translateY(0)}100%{transform:translateY(-130vh)}}
-footer{margin-top:30px;opacity:.7;font-size:14px}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Poppins,sans-serif;
+}
+
+body{
+height:100vh;
+overflow:hidden;
+background:linear-gradient(135deg,#120136,#03506f,#0a043c);
+display:flex;
+justify-content:center;
+align-items:center;
+color:white;
+}
+
+/* Animated Background */
+
+.stars{
+position:fixed;
+width:100%;
+height:100%;
+overflow:hidden;
+z-index:-1;
+}
+
+.star{
+position:absolute;
+width:3px;
+height:3px;
+background:white;
+border-radius:50%;
+animation:twinkle 3s infinite;
+}
+
+@keyframes twinkle{
+0%,100%{opacity:.2;}
+50%{opacity:1;transform:scale(2);}
+}
+
+/* Card */
+
+.card{
+
+width:90%;
+max-width:700px;
+
+padding:40px;
+
+text-align:center;
+
+background:rgba(255,255,255,.08);
+
+backdrop-filter:blur(15px);
+
+border-radius:25px;
+
+box-shadow:0 0 40px rgba(255,255,255,.2);
+
+}
+
+h1{
+
+font-family:'Great Vibes',cursive;
+
+font-size:70px;
+
+color:#FFD166;
+
+margin-bottom:20px;
+
+animation:glow 2s infinite alternate;
+
+}
+
+@keyframes glow{
+
+from{
+text-shadow:0 0 10px gold;
+}
+
+to{
+text-shadow:0 0 30px gold;
+}
+
+}
+
+.cake{
+
+font-size:110px;
+
+animation:bounce 2s infinite;
+
+}
+
+@keyframes bounce{
+
+50%{
+transform:translateY(-20px);
+}
+
+}
+
+button{
+
+margin-top:30px;
+
+padding:15px 35px;
+
+font-size:20px;
+
+border:none;
+
+border-radius:40px;
+
+cursor:pointer;
+
+background:#ff4d6d;
+
+color:white;
+
+transition:.4s;
+
+}
+
+button:hover{
+
+transform:scale(1.08);
+
+}
+
+#wish{
+
+display:none;
+
+margin-top:30px;
+
+font-size:20px;
+
+line-height:1.8;
+
+animation:fade 2s;
+
+}
+
+@keyframes fade{
+
+from{
+opacity:0;
+transform:translateY(30px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+/* Hearts */
+
+.heart{
+
+position:absolute;
+
+font-size:25px;
+
+animation:float 8s linear infinite;
+
+opacity:.8;
+
+}
+
+@keyframes float{
+
+0%{
+
+transform:translateY(100vh);
+
+}
+
+100%{
+
+transform:translateY(-120vh);
+
+}
+
+}
+
+footer{
+
+margin-top:25px;
+
+opacity:.8;
+
+}
+
 </style>
 </head>
+
 <body>
-<canvas id="confetti"></canvas>
-<div class="container">
-<h1>Happy Birthday 🎉</h1>
-<div class="subtitle">Dear <b>[Zainab]</b>, Today is all about celebrating YOU! ❤️</div>
+
+<div class="stars" id="stars"></div>
+
+<div class="card">
+
+<h1>Happy Birthday</h1>
+
+<h2>Zainab ❤️</h2>
+
 <div class="cake">🎂</div>
-<button onclick="showWish()">🎁 Open Your Gift</button>
-<div class="message" id="wish">
-<h2>🎉 Surprise! 🎉</h2>
-<p>May your birthday be filled with endless smiles, beautiful memories, and dreams coming true.<br><br>
-May this year bring you happiness, good health, success, and lots of unforgettable adventures.<br><br>
-Thank you for being such an amazing person in my life . I hope your special day is as wonderful, kind, and incredible as you are.<br><br>
-Never stop smiling, never stop dreaming, and never stop being yourself.<br><br>
-❤️ Happy Birthday Once Again! ❤️</p>
-<h1>🥳🎂🎈</h1>
+
+<p>
+A special surprise is waiting for you...
+</p>
+
+<button onclick="openGift()">
+🎁 Open My Gift
+</button>
+
+<div id="wish">
+
+<h2>💖 Dear Zainab 💖</h2>
+
+<p>
+
+Today is all about celebrating someone truly amazing.
+
+May your life always be filled with happiness,
+peace,
+love,
+success,
+and beautiful memories.
+
+Keep smiling because your smile makes the world brighter.
+
+Never stop believing in yourself.
+
+You deserve every happiness this world has to offer.
+
+✨ Happy Birthday! ✨
+
+May all your dreams come true.
+
+🎂🎉❤️
+
+</p>
+
+<h1 style="font-size:55px;">
+🥳 HAPPY BIRTHDAY 🥳
+</h1>
+
 </div>
-<footer>Made with ❤️ especially for you</footer>
+
+<footer>
+
+Made with ❤️ by Huzaifa
+
+</footer>
+
 </div>
+
 <script>
-const emojis=["🎈","🎉","✨","💖","🎁","🎊"];
-for(let i=0;i<25;i++){let b=document.createElement("div");b.className="balloon";b.innerHTML=emojis[Math.floor(Math.random()*emojis.length)];b.style.left=Math.random()*100+"vw";b.style.animationDuration=(8+Math.random()*8)+"s";b.style.animationDelay=Math.random()*5+"s";document.body.appendChild(b);}
-function showWish(){document.getElementById("wish").style.display="block";launchConfetti();}
-const canvas=document.getElementById("confetti"),ctx=canvas.getContext("2d");canvas.width=innerWidth;canvas.height=innerHeight;let pieces=[];
-function launchConfetti(){pieces=[];for(let i=0;i<250;i++)pieces.push({x:Math.random()*canvas.width,y:-20,r:Math.random()*8+2,color:`hsl(${Math.random()*360},100%,60%)`,speed:Math.random()*5+2});animate();}
-function animate(){ctx.clearRect(0,0,canvas.width,canvas.height);pieces.forEach(p=>{ctx.beginPath();ctx.fillStyle=p.color;ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fill();p.y+=p.speed;p.x+=Math.sin(p.y*0.01)});pieces=pieces.filter(p=>p.y<canvas.height+20);if(pieces.length)requestAnimationFrame(animate);}
-onresize=()=>{canvas.width=innerWidth;canvas.height=innerHeight;}
+
+// Stars
+
+for(let i=0;i<250;i++){
+
+let s=document.createElement("div");
+
+s.className="star";
+
+s.style.left=Math.random()*100+"vw";
+
+s.style.top=Math.random()*100+"vh";
+
+s.style.animationDelay=Math.random()*3+"s";
+
+document.getElementById("stars").appendChild(s);
+
+}
+
+// Hearts
+
+for(let i=0;i<35;i++){
+
+let h=document.createElement("div");
+
+h.className="heart";
+
+h.innerHTML="💖";
+
+h.style.left=Math.random()*100+"vw";
+
+h.style.animationDuration=(6+Math.random()*6)+"s";
+
+h.style.animationDelay=Math.random()*5+"s";
+
+document.body.appendChild(h);
+
+}
+
+function openGift(){
+
+document.getElementById("wish").style.display="block";
+
+launchConfetti();
+
+}
+
+function launchConfetti(){
+
+for(let i=0;i<250;i++){
+
+let c=document.createElement("div");
+
+c.innerHTML=["🎉","✨","🎊","💖","🎈"][Math.floor(Math.random()*5)];
+
+c.style.position="fixed";
+
+c.style.left=Math.random()*100+"vw";
+
+c.style.top="-50px";
+
+c.style.fontSize=(20+Math.random()*20)+"px";
+
+c.style.transition="5s linear";
+
+document.body.appendChild(c);
+
+setTimeout(()=>{
+
+c.style.transform="translateY(120vh) rotate(720deg)";
+
+},50);
+
+setTimeout(()=>{
+
+c.remove();
+
+},6000);
+
+}
+
+}
+
 </script>
-</body></html>
+
+</body>
+</html>
